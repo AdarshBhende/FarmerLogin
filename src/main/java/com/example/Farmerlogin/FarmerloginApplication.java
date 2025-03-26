@@ -2,12 +2,11 @@ package com.example.Farmerlogin;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
 import com.example.Farmerlogin.service.FarmerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import java.util.Scanner;
 
 @SpringBootApplication
 public class FarmerloginApplication implements CommandLineRunner {
@@ -21,7 +20,13 @@ public class FarmerloginApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) {
-		farmerService.fetchFarmerDetails();
+		Scanner scanner = new Scanner(System.in);
+		System.out.print("Enter Farmer ID: ");
+		Long farmerId = scanner.nextLong(); // Get the farmer ID from user input
+
+		// Call the service method with the farmer ID
+		farmerService.fetchFarmerDetails(farmerId);
+
+		scanner.close(); // Close the scanner
 	}
 }
-
